@@ -6,7 +6,7 @@ const searchBook = () => {
     // console.log(searchText);
     searchField.value = ''; // to remove input value after searching 
 
-    const url = `http://openlibrary.org/search.json?q=${searchText}`;
+    const url = `https://openlibrary.org/search.json?q=${searchText}`;
     fetch(url)
         // console.log(url);
         .then(Response => Response.json())
@@ -18,9 +18,9 @@ const notFound = (styles) => {
 };
 notFound('none');
 
-const spinner = styles => {
-    document.getElementById('spinner').style.display = styles;
-}
+// const spinner = styles => {
+//     document.getElementById('spinner').style.display = styles;
+// }
 
 const displaySearchResult = (data) => {
     const books = data.docs;
