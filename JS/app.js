@@ -3,7 +3,6 @@ const searchBook = () => {
     const searchField = document.getElementById('search-field');
     const searchText = searchField.value;
 
-    // console.log(searchText);
     searchField.value = ''; // to remove input value after searching 
 
     const url = `https://openlibrary.org/search.json?q=${searchText}`;
@@ -18,9 +17,10 @@ const notFound = (styles) => {
 };
 notFound('none');
 
-// const spinner = styles => {
-//     document.getElementById('spinner').style.display = styles;
-// }
+const number = styles => {
+    document.getElementById('number-found').style.display = styles;
+}
+number('none');
 
 const displaySearchResult = (data) => {
     const books = data.docs;
@@ -28,16 +28,16 @@ const displaySearchResult = (data) => {
     const totalNumber = (data.numFound);
     // data.numFound ? found = totalNumber : '';
     document.getElementById('number-found').innerHTML = `<h2> Total search Found : ${totalNumber}</h2>`;
-
     // console.log(totalNumber);
+
     const searchResult = document.getElementById('search-result');
     searchResult.textContent = '';
 
     if (totalNumber !== 0) {
-
         books.forEach(book => {
-            console.log(book);
+            // console.log(book);
             notFound('none');
+            number('block');
 
             const div = document.createElement('div');
             div.classList.add('col');
@@ -57,7 +57,7 @@ const displaySearchResult = (data) => {
     }
     else {
         notFound('block');
-        // displaySearchResult('none');
+
     }
 
 };
